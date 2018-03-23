@@ -11,4 +11,5 @@ RUN addgroup -g 1000 -S flask_user && \
 USER flask_user
 ADD . .
 EXPOSE 8000
-CMD ["python", "manage.py"]
+#CMD ["python", "manage.py"]
+ENTRYPOINT ["/usr/local/bin/gunicorn", "--config", "gunicorn.conf.py", "manage:app"]
